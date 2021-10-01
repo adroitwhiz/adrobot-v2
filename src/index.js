@@ -35,14 +35,18 @@ const rest = new REST({ version: '9' }).setToken(process.env.TOKEN);
 	const {commandData, commandFunctions} = await loadCommands();
 
 	try {
-		console.log('Started refreshing application (/) commands.');
+		console.log(`Started refreshing ${process.env.COMMAND_MODE} (/) commands.`);
+
+		let route = process.env.COMMAND_MODE === 'global' ?
+			Routes.applicationCommands(process.env.CLIENT_ID) :
+			Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID);
 
 		await rest.put(
-			Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
+			route,
 			{body: commandData},
 		);
 
-		console.log('Successfully reloaded application (/) commands.');
+		console.log(`Successfully reloaded ${process.env.COMMAND_MODE} (/) commands.`);
 	} catch (error) {
 		console.error(error);
 	}
