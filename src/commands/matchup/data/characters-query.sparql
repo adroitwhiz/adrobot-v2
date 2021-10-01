@@ -1,0 +1,8 @@
+SELECT DISTINCT ?fictional_characterLabel ?article WHERE {
+  ?fictional_character p:P31/ps:P31/wdt:P279* wd:Q95074.
+  ?article schema:about ?fictional_character ;
+           schema:isPartOf <https://en.wikipedia.org/>.
+  ?fictional_character rdfs:label ?label.
+  FILTER( LANG(?label)="en" ).
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}

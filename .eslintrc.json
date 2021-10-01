@@ -1,0 +1,27 @@
+{
+	"parserOptions": {
+		"ecmaVersion": 2020
+	},
+	"env": {
+		"node":true,
+		"es6": true
+	},
+	"extends": "eslint:recommended",
+	"rules": {
+		"accessor-pairs": "warn",
+		"eqeqeq": "error",
+		"one-var": ["error", "never"],
+		"no-var": "error",
+		"no-console": "warn",
+		"func-style": "error",
+		"key-spacing": "error",
+		"semi": ["error", "always"],
+		"quotes": ["error", "single"],
+		"no-prototype-builtins": "off",
+		"indent": ["error", "tab"],
+		"max-len": ["error", 120, {
+			"ignoreStrings": true,
+			"ignoreTemplateLiterals": true
+		}]
+	}
+}
